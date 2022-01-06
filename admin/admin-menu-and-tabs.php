@@ -2,23 +2,23 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
 
 /**
- * Class Disciple_Tools_Plugin_Starter_Template_Menu
+ * Class DT_Custom_Location_Grid_Menu
  */
-class Disciple_Tools_Plugin_Starter_Template_Menu {
+class DT_Custom_Location_Grid_Menu {
 
-    public $token = 'disciple_tools_plugin_starter_template';
-    public $page_title = 'Plugin Starter Template';
+    public $token = 'disciple_tools_custom_location_grid';
+    public $page_title = 'Custom Location Grid';
 
     private static $_instance = null;
 
     /**
-     * Disciple_Tools_Plugin_Starter_Template_Menu Instance
+     * DT_Custom_Location_Grid_Menu Instance
      *
-     * Ensures only one instance of Disciple_Tools_Plugin_Starter_Template_Menu is loaded or can be loaded.
+     * Ensures only one instance of DT_Custom_Location_Grid_Menu is loaded or can be loaded.
      *
      * @since 0.1.0
      * @static
-     * @return Disciple_Tools_Plugin_Starter_Template_Menu instance
+     * @return DT_Custom_Location_Grid_Menu instance
      */
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
@@ -83,11 +83,11 @@ class Disciple_Tools_Plugin_Starter_Template_Menu {
             <?php
             switch ( $tab ) {
                 case "general":
-                    $object = new Disciple_Tools_Plugin_Starter_Template_Tab_General();
+                    $object = new DT_Custom_Location_Grid_Tab_General();
                     $object->content();
                     break;
                 case "second":
-                    $object = new Disciple_Tools_Plugin_Starter_Template_Tab_Second();
+                    $object = new DT_Custom_Location_Grid_Tab_Second();
                     $object->content();
                     break;
                 default:
@@ -100,12 +100,12 @@ class Disciple_Tools_Plugin_Starter_Template_Menu {
         <?php
     }
 }
-Disciple_Tools_Plugin_Starter_Template_Menu::instance();
+DT_Custom_Location_Grid_Menu::instance();
 
 /**
- * Class Disciple_Tools_Plugin_Starter_Template_Tab_General
+ * Class DT_Custom_Location_Grid_Tab_General
  */
-class Disciple_Tools_Plugin_Starter_Template_Tab_General {
+class DT_Custom_Location_Grid_Tab_General {
     public function content() {
         ?>
         <div class="wrap">
@@ -180,9 +180,9 @@ class Disciple_Tools_Plugin_Starter_Template_Tab_General {
 
 
 /**
- * Class Disciple_Tools_Plugin_Starter_Template_Tab_Second
+ * Class DT_Custom_Location_Grid_Tab_Second
  */
-class Disciple_Tools_Plugin_Starter_Template_Tab_Second {
+class DT_Custom_Location_Grid_Tab_Second {
     public function content() {
         ?>
         <div class="wrap">

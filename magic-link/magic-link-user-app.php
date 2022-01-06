@@ -3,22 +3,20 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 
 /**
- * Class Disciple_Tools_Plugin_Starter_Template_Magic_User_App
+ * Class DT_Custom_Location_Grid_Magic_User_App
  */
-class Disciple_Tools_Plugin_Starter_Template_Magic_User_App extends DT_Magic_Url_Base {
+class DT_Custom_Location_Grid_Magic_User_App extends DT_Magic_Url_Base {
 
     public $page_title = 'Starter - Magic Links - User App';
     public $page_description = 'User App - Magic Links.';
-    public $root = "starter_magic_app"; // @todo define the root of the url {yoursite}/root/type/key/action
-    public $type = 'starter_user_app'; // @todo define the type
+    public $root = "magic_app"; // @todo define the root of the url {yoursite}/root/type/key/action
+    public $type = 'user_app'; // @todo define the type
     public $post_type = 'user';
     private $meta_key = '';
     public $show_bulk_send = false;
     public $show_app_tile = false;
 
     private static $_instance = null;
-    public $meta = []; // Allows for instance specific data.
-
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
             self::$_instance = new self();
@@ -27,31 +25,6 @@ class Disciple_Tools_Plugin_Starter_Template_Magic_User_App extends DT_Magic_Url
     } // End instance()
 
     public function __construct() {
-
-        /**
-         * Specify metadata structure, specific to the processing of current
-         * magic link type.
-         *
-         * - meta:              Magic link plugin related data.
-         *      - app_type:     Flag indicating type to be processed by magic link plugin.
-         *      - post_type     Magic link type post type.
-         *      - contacts_only:    Boolean flag indicating how magic link type user assignments are to be handled within magic link plugin.
-         *                          If True, lookup field to be provided within plugin for contacts only searching.
-         *                          If false, Dropdown option to be provided for user, team or group selection.
-         *      - fields:       List of fields to be displayed within magic link frontend form.
-         */
-        $this->meta = [
-            'app_type'      => 'magic_link',
-            'post_type'     => $this->post_type,
-            'contacts_only' => false,
-            'fields'        => [
-                [
-                    'id'    => 'name',
-                    'label' => 'Name'
-                ]
-            ]
-        ];
-
         $this->meta_key = $this->root . '_' . $this->type . '_magic_key';
         parent::__construct();
 
@@ -99,6 +72,13 @@ class Disciple_Tools_Plugin_Starter_Template_Magic_User_App extends DT_Magic_Url
      * - label:             Magic link type name.
      * - description:       Magic link type description.
      * - settings_display:  Boolean flag which determines if magic link type is to be listed within frontend user profile settings.
+     * - meta:              Magic link plugin related data.
+     *      - app_type:     Flag indicating type to be processed by magic link plugin.
+     *      - post_type     Magic link type post type.
+     *      - contacts_only:    Boolean flag indicating how magic link type user assignments are to be handled within magic link plugin.
+     *                          If True, lookup field to be provided within plugin for contacts only searching.
+     *                          If false, Dropdown option to be provided for user, team or group selection.
+     *      - fields:       List of fields to be displayed within magic link frontend form.
      *
      * @param $apps_list
      *
@@ -110,7 +90,18 @@ class Disciple_Tools_Plugin_Starter_Template_Magic_User_App extends DT_Magic_Url
             'url_base'         => $this->root . '/' . $this->type,
             'label'            => $this->page_title,
             'description'      => $this->page_description,
-            'settings_display' => true
+            'settings_display' => true,
+            'meta'             => [
+                'app_type'      => 'magic_link',
+                'post_type'     => $this->post_type,
+                'contacts_only' => false,
+                'fields'        => [
+                    [
+                        'id'    => 'name',
+                        'label' => 'Name'
+                    ]
+                ]
+            ]
         ];
 
         return $apps_list;
@@ -164,7 +155,7 @@ class Disciple_Tools_Plugin_Starter_Template_Magic_User_App extends DT_Magic_Url
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'parts' => $this->parts,
                 'translations' => [
-                    'add' => __( 'Add Magic', 'disciple-tools-plugin-starter-template' ),
+                    'add' => __( 'Add Magic', 'disciple-tools-custom-location-grid' ),
                 ],
             ]) ?>][0]
 
@@ -355,4 +346,4 @@ class Disciple_Tools_Plugin_Starter_Template_Magic_User_App extends DT_Magic_Url
         return $data;
     }
 }
-Disciple_Tools_Plugin_Starter_Template_Magic_User_App::instance();
+DT_Custom_Location_Grid_Magic_User_App::instance();
