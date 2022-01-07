@@ -82,76 +82,10 @@ class DT_Custom_Location_Grid_Local_Map extends DT_Metrics_Chart_Base
 
     public function endpoint_geojson( WP_REST_Request $request ) {
         return [
-            'contacts' => Disciple_Tools_Mapping_Queries::points_geojson( 'contacts', [ 'overall_status' => [ 'active' ] ] ),
+            'contacts' => Disciple_Tools_Mapping_Queries::points_geojson( 'contacts' ),
             'trainings' => Disciple_Tools_Mapping_Queries::points_geojson( 'trainings' ),
-            'groups' => Disciple_Tools_Mapping_Queries::points_geojson( 'groups', ['group_status' => [ 'active' ] ] )
+            'groups' => Disciple_Tools_Mapping_Queries::points_geojson( 'groups' )
         ];
-//
-//        return
-//        global $wpdb;
-//
-//        if ( empty( $results ) ) {
-//            return [
-//                'contacts' => [
-//                    'type' => 'FeatureCollection',
-//                    'features' => [],
-//                ],
-//                'trainings' => [
-//                    'type' => 'FeatureCollection',
-//                    'features' => [],
-//                ],
-//                'groups' => [
-//                    'type' => 'FeatureCollection',
-//                    'features' => [],
-//                ]
-//            ];
-//        }
-//
-//        $data = [
-//            'contacts' => [],
-//            'trainings' => [],
-//            'groups' => []
-//        ];
-//        foreach ($results as $result) {
-//            $feature = array(
-//                'type' => 'Feature',
-//                'properties' => array(
-//                    'type' => $result['value']
-//                ),
-//                'geometry' => array(
-//                    'type' => 'Point',
-//                    'coordinates' => array(
-//                        (float) $result['lng'],
-//                        (float) $result['lat'],
-//                        1
-//                    ),
-//                ),
-//            );
-//            if ( '0' === $result['value'] ) {
-//                $data['closed'][] = $feature;
-//            } else if ( '1' === $result['value'] ) {
-//                $data['open'][] = $feature;
-//            } else if ( '2' === $result['value'] ) {
-//                $data['followup'][] = $feature;
-//            }
-//        }
-
-//
-//
-//        return [
-//            'contacts' => [
-//                'type' => 'FeatureCollection',
-//                'features' => $data['closed'],
-//            ],
-//            'trainings' => [
-//                'type' => 'FeatureCollection',
-//                'features' => $data['open'],
-//            ],
-//            'groups' => [
-//                'type' => 'FeatureCollection',
-//                'features' => $data['followup'],
-//            ]
-//        ];
     }
 
 }
