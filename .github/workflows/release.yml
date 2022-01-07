@@ -23,7 +23,7 @@ jobs:
       - name: Build project
         run: |
           mkdir disciple-tools-custom-location-grid
-          cp -r disciple-tools-custom-location-grid.php admin charts languages magic-link post-type rest-api site-link tile spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-custom-location-grid/
+          cp -r disciple-tools-custom-location-grid.php admin charts languages magic-link post-type spinner.svg version-control.json LICENSE SECURITY.md disciple-tools-custom-location-grid/
           zip -r disciple-tools-custom-location-grid.zip disciple-tools-custom-location-grid
       - name: Create Release
         id: create_release
