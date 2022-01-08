@@ -67,14 +67,16 @@
       </style>`)
 
     window.get_geojson().then(function(data){
+      console.log('window.get_geojson')
+      console.log(data)
 
       mapboxgl.accessToken = window.wp_js_object.map_key;
       var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
-        center: [-104.90139438833012, 39.76006690974131],
+        center: [window.wp_js_object.map_center.lng, window.wp_js_object.map_center.lat],
         minZoom: 0,
-        zoom: 10.824496558600584
+        zoom: window.wp_js_object.map_zoom
       });
 
       // disable map rotation using right click + drag
@@ -114,9 +116,9 @@
           });
 
           var bounds = new mapboxgl.LngLatBounds();
-          var ne = new mapboxgl.LngLat(-104.57042233716099,39.95746554053494)
+          var ne = new mapboxgl.LngLat(window.wp_js_object.map_bounds.ne.lng,window.wp_js_object.map_bounds.ne.lat)
           bounds.extend(ne)
-          var sw = new mapboxgl.LngLat(-105.16478198933403,39.54324994976875)
+          var sw = new mapboxgl.LngLat(window.wp_js_object.map_bounds.sw.lng,window.wp_js_object.map_bounds.sw.lat)
           bounds.extend(sw)
           map.fitBounds(bounds, { padding: {top: 20, bottom:20, left: 20, right: 20 } });
 
@@ -134,16 +136,16 @@
           });
         });
 
-        jQuery.getJSON(window.wp_js_object.custom_points_geojson, function (custom_points_geojson) {
-          console.log(custom_points_geojson)
-          map.addSource('custom_points_geojson', {
+        jQuery.getJSON(window.wp_js_object.custom_labels_geojson, function (custom_labels_geojson) {
+          console.log(custom_labels_geojson)
+          map.addSource('custom_labels_geojson', {
             type: 'geojson',
-            data: custom_points_geojson
+            data: custom_labels_geojson
           });
           map.addLayer({
             'id': 'points',
             'type': 'symbol',
-            'source': 'custom_points_geojson',
+            'source': 'custom_labels_geojson',
             "minzoom": 11,
             'layout': {
               'icon-image': 'custom-marker',
@@ -213,7 +215,16 @@
 
         spinner.removeClass('active')
 
+
+        map.on( 'zoomend', function(e){
+          console.log( map.getCenter() )
+          console.log( map.getBounds() )
+          console.log( map.getZoom() )
+        })
+
       });
+
+
     })
   }
 

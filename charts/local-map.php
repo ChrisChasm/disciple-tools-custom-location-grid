@@ -56,7 +56,10 @@ class DT_Custom_Location_Grid_Local_Map extends DT_Metrics_Chart_Base
                 'current_user_login' => wp_get_current_user()->user_login,
                 'current_user_id' => get_current_user_id(),
                 'custom_geojson' => trailingslashit( plugin_dir_url(__FILE__) ) . '100364508.geojson',
-                'custom_points_geojson' => trailingslashit( plugin_dir_url(__FILE__) ) . '100364508_points.geojson',
+                'custom_labels_geojson' => trailingslashit( plugin_dir_url(__FILE__) ) . '100364508_points.geojson',
+                'map_center' => [ 'lng' => -104.84782115214836, 'lat' => 39.760408905661905 ],
+                'map_bounds' => [ 'ne' => [ 'lng' => -104.584541080782, 'lat' => 39.921889121386556 ], 'sw' => [ 'lng' => -105.11110122351468, 'lat' => 39.59854914965416 ] ],
+                'map_zoom' => 11.426018073724192,
                 'stats' => [
                     // add preload stats data into arrays here
                 ],
