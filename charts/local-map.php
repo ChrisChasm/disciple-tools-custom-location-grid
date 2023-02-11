@@ -60,6 +60,7 @@ class DT_Custom_Location_Grid_Local_Map extends DT_Metrics_Chart_Base
                 'map_center' => [ 'lng' => -104.84782115214836, 'lat' => 39.760408905661905 ],
                 'map_bounds' => [ 'ne' => [ 'lng' => -104.584541080782, 'lat' => 39.921889121386556 ], 'sw' => [ 'lng' => -105.11110122351468, 'lat' => 39.59854914965416 ] ],
                 'map_zoom' => 11.426018073724192,
+                'list' => colorado_tracts_grid_ids(),
                 'stats' => [
                     // add preload stats data into arrays here
                 ],

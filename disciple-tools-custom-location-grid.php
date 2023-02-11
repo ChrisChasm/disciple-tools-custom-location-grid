@@ -80,6 +80,7 @@ class DT_Custom_Location_Grid {
 
 
             if ( strpos( dt_get_url_path(), 'metrics' ) !== false || ( $is_rest && strpos( dt_get_url_path(), 'disciple-tools-custom-location-grid-metrics' ) !== false ) ){
+                require_once( 'charts/colorado-tracts.php' );
                 require_once( 'charts/charts-loader.php' );  // add custom charts to the metrics area
             }
         }
